@@ -71,6 +71,14 @@ myNumber = undefined
 console.log(typeof (String(myNumber)));
 
 
+// *********** operations **********
+let op1 = ""+3+3  //33
+console.log(op1);
+
+let op2 = 3+3+""+3 //63
+console.log(op2);
+
+
 
 
  
