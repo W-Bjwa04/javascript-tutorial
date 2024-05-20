@@ -81,3 +81,29 @@ console.log("\nAfter Slice : ", carNames);
 console.log("\nBefore Splice : ", carNames);
 console.log(carNames.splice(1,3)); //splice
 console.log("\nAfter Splice : ", carNames);
+
+
+
+let arr3 = [1,2,3,4,5]
+let arr4 = [7,8,9,10,11]
+
+
+// spreading both arrays 
+
+let arr5 = [...arr3,...arr4]  // joins the arrays 3 and 4
+
+console.log(arr5);
+
+
+// flat the arrays 
+
+let arr6 = [1,2,[3,4,5],[[6,7,8]]]
+
+let arr7 = arr6.flat(Infinity)
+console.log(arr7);
+
+// instanceOf
+// Arrays.isArray(X)
+//Arrays.From(String)
+//Arrays.of(v1,v2,v3)
+
