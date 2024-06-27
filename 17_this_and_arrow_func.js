@@ -76,4 +76,9 @@ console.log(objFunc());
 
 
 
+// you can get all the arguments passed to the function by using argumrents statment 
 
+
+// blog link for the differ between the this and the arrow function 
+
+// https://www.freecodecamp.org/news/the-difference-between-arrow-functions-and-normal-functions/
