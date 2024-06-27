@@ -1,1 +1,7 @@
-console.log("Waleed Shahid")
+let apiData = {"results":[{"gender":"male","name":{"title":"Mr","first":"Elliot","last":"Harcourt"},"location":{"street":{"number":6623,"name":"Maple Ave"},"city":"Elgin","state":"Prince Edward Island","country":"Canada","postcode":"Z2L 0Z9","coordinates":{"latitude":"-64.6138","longitude":"-5.9578"},"timezone":{"offset":"+1:00","description":"Brussels, Copenhagen, Madrid, Paris"}},"email":"elliot.harcourt@example.com","login":{"uuid":"467aa4b0-78c8-4af0-a18c-a95c7b74b0d1","username":"lazyrabbit713","password":"banzai","salt":"BFWIP0bj","md5":"e1cb42824a2d1cf301927303a5e3b85a","sha1":"84ddb968d80cc4aaa718426ef63d96f3bd361696","sha256":"b54794716649f561b60069530762d2a25a8fda443a31461f418d82e1ef5a5ce0"},"dob":{"date":"1976-11-09T11:41:53.486Z","age":47},"registered":{"date":"2009-09-03T17:26:27.039Z","age":14},"phone":"M74 H70-8038","cell":"W00 P62-5649","id":{"name":"SIN","value":"987905098"},"picture":{"large":"https://randomuser.me/api/portraits/men/79.jpg","medium":"https://randomuser.me/api/portraits/med/men/79.jpg","thumbnail":"https://randomuser.me/api/portraits/thumb/men/79.jpg"},"nat":"CA"}],"info":{"seed":"1e74cac3e9779827","results":1,"page":1,"version":"1.4"}}
+
+
+
+let name = apiData.results[0].name.first
+
+console.log(name);

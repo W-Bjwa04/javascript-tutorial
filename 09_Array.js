@@ -55,7 +55,7 @@ console.log(`After ${arr2}`);
 //convert array to the string 
 console.log(`Before : ${(arr2)}`); 
 console.log(`Before type : ${typeof(arr2)}`); 
-console.log(`After ${(arr2.join())}`);
+console.log(`After ${(arr2.join("-"))}`);  // inside the join you can use your own separator
 console.log(`After ${typeof(arr2.join())}`);
 
 // searching and findind index of element 
