@@ -55,7 +55,7 @@ myfunc3()
 
 // implicit and the explicit return statements in the js 
 
-// if you have an single line of the function then its prefer to use the implicit return
+// if you have an single line of the function  or the return statment is only the statement then its prefer to use the implicit return
 
 
 const addTwoNum=(num1,num2) => (num1+num2)
