@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://t3.ftcdn.net/jpg/02/16/60/42/360_F_216604243_4yvQhIudgknAWu04Ob7aSOu6BdIfhBNb.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            margin: 50px auto;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 1200px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .table-container {
+            max-height: 400px;
+            overflow-y: auto;
+            overflow-x: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            min-width: 1200px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .button-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .car-count-container {
+            text-align: center;
+            margin: 20px 0;
+            font-size: 18px;
+        }
+        #cars-count {
+            font-size: 24px;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>
+            Here You Get Different Cars Information
+        </h1>
+        <div class="car-count-container">
+            <strong>
+                No Of Cars:
+            </strong>
+            <div id="cars-count">
+                0
+            </div>
+        </div>
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Car Name</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Color</th>
+                        <th>Mileage</th>
+                        <th>Price</th>
+                        <th>Fuel Type</th>
+                        <th>Transmission</th>
+                        <th>Engine</th>
+                        <th>Horse-Power</th>
+                        <th>Features</th>
+                        <th>Owners</th>
+                    </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+        </div>
+        <div class="button-container">
+            <button id="start">START</button>
+            <button id="stop">STOP</button>
+            <button id="reset">RESET</button>
+        </div>
+    </div>
+
+    <script>
+        const responseUrl = `https://freetestapi.com/api/v1/cars`;
+
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', responseUrl);
+
+        let counter = 0;
+        let apiLoaded = false;
+        let startEvent = null;
+
+        const incremental = function(number) {
+            return number + 1;
+        };
+
+        document.querySelector('#start').onclick = function() {
+            if (!apiLoaded) {
+                alert(`Wait For the API TO BE LOADED`);
+            }
+        };
+
+        let carsCount = document.querySelector('#cars-count');
+
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4) {
+                apiLoaded = true;
+                const apiResponse = JSON.parse(xhr.responseText);
+
+                document.querySelector('#start').addEventListener('click', () => {
+                    startEvent = setInterval(() => {
+                        if (!(apiResponse[counter] === undefined)) {
+                            displayCarDetails(apiResponse[counter]);
+                            counter = incremental(counter);
+                            carsCount.innerHTML = `${counter}`;
+                        } else {
+                            stopEvent();
+                        }
+                    }, 1000);
+                }, false);
+            }
+        };
+
+        const stopEvent = function() {
+            clearInterval(startEvent);
+        }
+
+        document.querySelector('#stop').onclick = stopEvent;
+
+        document.querySelector('#reset').onclick = function() {
+            clearInterval(startEvent);
+            counter = 0;
+            document.querySelector('#tbody').innerHTML = '';
+            carsCount.innerHTML = '0';
+        };
+
+        const displayCarDetails = function(car) {
+            const tableBody = document.querySelector('#tbody');
+            const newRow = tableBody.insertRow();
+
+            newRow.insertCell(0).innerHTML = `${car.model}`;
+            newRow.insertCell(1).innerHTML = `${car.make}`;
+            newRow.insertCell(2).innerHTML = `${car.year}`;
+            newRow.insertCell(3).innerHTML = `${car.color}`;
+            newRow.insertCell(4).innerHTML = `${car.mileage}`;
+            newRow.insertCell(5).innerHTML = `${car.price}`;
+            newRow.insertCell(6).innerHTML = `${car.fuelType}`;
+            newRow.insertCell(7).innerHTML = `${car.transmission}`;
+            newRow.insertCell(8).innerHTML = `${car.engine}`;
+            newRow.insertCell(9).innerHTML = `${car.horsepower}`;
+            newRow.insertCell(10).innerHTML = `${car.features.join(', ')}`;
+            newRow.insertCell(11).innerHTML = `${car.owners}`;
+        };
+        xhr.send();
+    </script>
+</body>
+</html>

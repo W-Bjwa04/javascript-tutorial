@@ -67,10 +67,3 @@ obj2.greeting = function(){
 console.log(obj2.greeting());
 
 
-// using the function with the objects 
-
-Person.greeting=function(){
-    console.log(`Hello, My Name Is ${this.name}`);
-}
-
-Person.greeting()

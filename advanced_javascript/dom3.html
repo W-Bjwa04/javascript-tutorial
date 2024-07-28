@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Element </title>
+</head>
+<body style="background-color: black; color: white;">
+    
+</body>
+
+<script>
+    // creation of an new element 
+
+    let div = document.createElement('div')
+    
+
+    // adding attributes to it 
+    div.className='main'
+    div.id=Math.round(Math.random()*10+1)
+    div.setAttribute('title','new-tag')
+
+    div.style.backgroundColor='orange'
+    div.style.color='purple'
+
+    // div.innerText="Created By JS (DOM)"
+    // bad approach  
+
+    // but it is still invisible to the screen becuase it is currently present in the memory and to make it visible to screen you should have to attach this to the document 
+    console.log(div);
+
+
+    // use good approach to add text node
+
+    const textNodeOne = document.createTextNode("Created By JS (DOM)")
+
+    
+    div.appendChild(textNodeOne)
+
+    // appending div to the document body 
+    document.body.appendChild(div)
+</script>
+</html>

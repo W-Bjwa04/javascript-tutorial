@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        li strong {
+            color: #1da1f2;
+        }
+    </style>
+</head>
+<body>
+    <ul id="post-list"></ul>
+
+    <script>
+        const apiUrl = "https://jsonplaceholder.typicode.com/posts";
+        let apiResponse = null;
+        let apiLoaded = false;
+
+        async function loadAPI(apiUrl) {
+            try {
+                const data = await fetch(apiUrl);
+                apiResponse = await data.json();
+                apiLoaded = true;
+            } catch (error) {
+                alert(`API NOT LOADED`);
+            }
+        }
+
+        async function checkApiLoaded() {
+            while (!apiLoaded) {
+                await new Promise((resolve) => {
+                    setTimeout(resolve, 1000);
+                });
+            }
+            
+            if (apiResponse.length > 0) {
+                let count = 0;
+                setInterval(() => {
+                    const blogData = apiResponse[count];
+                    displayList(blogData);
+                    count = (count + 1) % apiResponse.length;
+                }, 3000);
+            }
+        }
+
+        function displayList(blogData) {
+            const postList = document.getElementById('post-list');
+            const listItem = document.createElement('li');
+            listItem.innerHTML = `
+                <strong>User ID:</strong> ${blogData.userId}<br>
+                <strong>Blog ID:</strong> ${blogData.id}<br>
+                <strong>Title:</strong> ${blogData.title}<br>
+                <strong>Body:</strong> ${blogData.body}
+            `;
+            postList.innerHTML = '';
+            postList.appendChild(listItem);
+        }
+
+        loadAPI(apiUrl);
+        checkApiLoaded();
+    </script>
+</body>
+</html>

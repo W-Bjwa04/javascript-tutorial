@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Div Using Function</title>
+</head>
+<body style="background-color: black; color: white;">
+    
+</body>
+
+<script>
+
+
+    function createDiv(text,fontColor){
+        let div = document.createElement('div')
+        div.setAttribute('class','main')
+        div.setAttribute('id',Math.random(Math.random()*10+1))
+        const textNode = document.createTextNode(text)
+        div.appendChild(textNode)
+        div.style.color=fontColor
+        div.style.padding='10px'
+        div.style.borderRadius='5px'
+        div.style.border='5px'
+        document.body.appendChild(div)
+    }
+   
+    const carNames =['Mehran','Corolla','Cultus','Margalla','City','Civic','Yaris','Vitz','Alto']
+    const carColors = ["Red", "Green", "Blue", "Yellow", "Purple", "Orange", "Pink", "Brown", "Gray"];
+
+    for (let index = 0; index < carNames.length; index++) {
+        createDiv(carNames[index],carColors[index])
+    }
+</script>
+</html>

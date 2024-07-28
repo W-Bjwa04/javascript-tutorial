@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM(4)</title>
+</head>
+<body style="background-color: black; color: white;">
+  
+</body>
+
+    <ul class="programming-languages">
+        <li>C++</li>
+        <li>JavaScript</li>
+    </ul>
+
+<script>
+    // adding new li thorugh using fuction so first select the parent element 
+
+    const listTag = document.querySelector('.programming-languages')
+    
+    // function for new li tag 
+    function addNewLi(liText, listParentTag){
+        const li = document.createElement('li')
+        const textNode = document.createTextNode(liText)
+        li.append(liText)
+        listParentTag.appendChild(li)
+    }
+
+    const programmingLanguages = ["Python", "Java", "Ruby", "C#", "Go", "Swift", "PHP", "Kotlin", "Rust", "TypeScript"];
+
+    programmingLanguages.forEach(function (element) {
+        addNewLi(element,listTag)
+    })
+  
+
+    // edit an element in the dom 
+
+
+    function editElement(newText, element){
+        // we use the optimized approach 
+        // 1 . first we create a new element with the desired properties 
+        // 2. Second we replace the new one with the previous one 
+
+
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(newText))
+        element.replaceWith(li)
+    }
+
+
+    // now i am replacing the first four li elements 
+
+    const newText = ['no-text','no-text','no-text','no-text']
+
+    for (let index = 0; index < 3; index++) {
+        const liElement= document.querySelector(`li:nth-child(${index+1})`)  // select the element 
+
+        editElement(newText[index],liElement)
+    }
+
+    
+
+    // Now i am deleting list first 4 elements
+    // using same approach fisrt select the element then 
+    // delete it 
+
+    const deleteElements= (element)=>{
+        element.remove()
+    }
+
+    for (let index = 0; index < 4; index++) {
+        const li = document.querySelector(`li:nth-child(${index+1})`)
+        deleteElements(li)
+        
+    }
+</script>
+</html>

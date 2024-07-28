@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Color Generator</title>
+    <style>
+        #color-box{
+            background-color: black;
+            padding: 60px;
+            width: 100px;
+        }
+
+        #start,stop{
+            margin-top: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="color-box">
+           
+        </div>
+        <button id="start">
+            Start
+        </button>
+        <button id="stop">
+            Stop
+        </button>
+    </div>
+</body>
+
+<script>
+    const randomColorGenrator = function(){
+        const hex = '0123456789ABCDEF'
+        let color = '#'
+        
+        for (let index = 0; index < 6; index++) {
+            color += hex[Math.floor(Math.random()*16)]  
+        }
+
+        return color
+    }
+
+  
+    let start = false
+    // random color generation on pressing start button 
+
+    document.querySelector('#start').addEventListener('click',function(){
+
+        if(!start){
+                stop=false
+                start = setInterval(() => {
+                let randomColor = randomColorGenrator()
+                document.querySelector('#color-box').style.backgroundColor=randomColor
+            }, 1000);
+        } else{
+            alert(`Random Genration Alerady Started`)
+        }
+    },false)
+
+
+    let stop = false
+    // stop the random genration 
+    document.querySelector('#stop').addEventListener('click',function(){
+        if(!stop){
+            clearInterval(start)
+            stop=true
+            start=false
+            alert(`random generation is stopped`)
+        } else{
+            alert(`random genration is stopped already`)
+        }
+    },false)
+
+
+
+
+
+
+</script>
+</html>

@@ -1,0 +1,18 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #706b6b; /* Optional: to have a contrast background */
+}
+
+#date, #time {
+    background-color: orange;
+    color: white; /* Optional: for better readability */
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1.5em;
+    margin: 10px; /* Optional: to add some space between the elements */
+}

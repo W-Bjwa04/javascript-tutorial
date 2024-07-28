@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Keyborad-Magic</title>
+    <style>
+         body {
+            background-color: grey;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+        }
+
+        #main-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            background-color: #fff;
+            color: #000;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main-title">
+        Press Any Key On Keyboard and watch the magic
+    </div>
+
+    <div>
+        <table id="data-table">
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>KeyCode</th>
+                    <th>Code</th>
+                </tr>
+            </thead>
+           <tbody>
+
+           </tbody>
+            
+        </table> 
+    </div>
+    
+</body>
+
+<script>
+
+    // add the event listener to the main window 
+
+
+    window.addEventListener('keydown',function(event){
+
+        const tableBody = document.querySelector('tbody')
+        const newRow = tableBody.insertRow()
+        const keyCell = newRow.insertCell(0)
+        const keyCodeCell = newRow.insertCell(1)
+        const codeCell = newRow.insertCell(2)
+        
+        
+        keyCell.innerHTML=`${event.key===' '? 'Space' : event.key}`
+        keyCodeCell.innerHTML=`${event.keyCode}`
+        codeCell.innerHTML=`${event.code}`
+    },false)
+</script>
+</html>

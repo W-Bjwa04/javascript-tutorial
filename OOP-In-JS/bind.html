@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React</title>
+</head>
+<body>
+    <button id="click-btn">
+        Press Me
+    </button>
+</body>
+
+
+<script>
+
+    class React{
+        constructor(){
+            this.language="Javascript",
+            this.library="React",
+            this.server="https://3000://"
+
+
+            document.querySelector('#click-btn')
+                .addEventListener('click',this.clickMe
+                    .bind(this)
+                )
+        }
+
+        clickMe(){
+            console.log(`Button Got Pressed`);
+            console.log(`${this.server}`);
+        }
+    }
+
+    const react = new React()
+   
+</script>
+</html>

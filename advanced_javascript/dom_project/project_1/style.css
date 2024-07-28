@@ -1,0 +1,92 @@
+.navbar {
+    display: flex;
+    background-color: #333;
+    padding: 5px;
+    border-radius: 10px;
+    border-color: orange;
+    border-style: dotted;
+}
+
+.navbar div {
+
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    
+    
+}
+
+#home {
+    background-color: white;
+    padding: 2px;
+    border-color: red;
+    border-radius: 0px;
+    border-style: double;
+    margin-right: 30px; /* Adjust this value to set the gap */
+    margin-left: 200px;
+    border-radius: 10px;
+    background-color: orange;
+    color: white;
+
+}
+
+#youtube-channel {
+    background-color: white;
+    padding: 2px;
+    border-color: red;
+    border-radius: 10px;
+    border-style: double;
+    background-color: orange;
+    color: white;
+    
+}
+
+
+#main-heading {
+    margin-top: 50px;
+    margin-left: 160px;
+}
+
+.buttons{
+    display: flex;
+    margin-top: 100px;
+}
+
+#grey {
+    background-color: grey;
+    padding: 50px;
+    border-radius: 20%;
+    margin-left: 50px;
+}
+
+#red {
+    background-color: red;
+    padding: 50px;
+    border-radius: 20%;
+    margin-left: 50px;
+}
+#blue {
+    background-color: blue;
+    padding: 50px;
+    border-radius: 20%;
+    margin-left: 50px;
+}
+#green {
+    background-color: green;
+    padding: 50px;
+    border-radius: 20%;
+    margin-left: 50px;
+}
+
+
+#info {
+    margin-left: 150px;
+    margin-top: 100px;
+}
+
+
+#developer-info {
+    margin-left: 360px;
+    margin-top: 30px;
+    color: black;
+}

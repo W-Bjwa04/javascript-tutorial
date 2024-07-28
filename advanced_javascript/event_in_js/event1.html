@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events Demo</title>
+</head>
+<body>
+    <ul id="car-images">
+        <li>
+            <h1 id="main-title">
+                Different Cars 
+            </h1>
+        </li>
+        <li>
+        <img src="https://images.unsplash.com/photo-1695692323563-07543186e3a2?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y2l2aWMlMjBlZ3xlbnwwfHwwfHx8MA%3D%3D" alt="Civic" id="civic">
+        </li>
+        <li>
+        <img src="https://images.unsplash.com/photo-1622210642960-0f6a2cdbdc9f?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNvcm9sbGElMjBjYXJ8ZW58MHx8MHx8fDA%3D" alt="Corolla" id="corolla">
+        </li>
+        <li>
+        <img src="https://images.unsplash.com/photo-1524095838546-2d9b8d00f212?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8VG95b3RhfGVufDB8fDB8fHww" alt="Revo" id="revo">
+        </li>
+        <li>
+            <a href="https://www.google.com" id="google"></a>
+        </li>
+    </ul>
+</body>
+
+
+<script>
+    // demonstration of the events propagation 
+    // event public 
+    // event capturing 
+
+    const ul=document.querySelector('#car-images')
+    const li = document.querySelector('#corolla')
+
+    ul.addEventListener('click',function(event){
+        console.log(`All Images Are Clicked`)
+    },false)
+
+    li.addEventListener('click',function(event){
+        console.log(`Corolla Clicked`)
+        event.stopPropagation()
+    },false)
+
+
+    // sometimes we want tho stop the default behaviour of an event 
+    // like the default behaviour of the <a> tag is to open the given href link 
+    // but we can prevent the <a> tag to perform its default behaviour 
+
+    const a = document.querySelector('#google')
+
+    a.addEventListener('click',function(e){
+        e.preventDefault()  // stop event on a to perform its default action of opening the href link 
+        console.log(`google is stoped`);
+        e.stopPropagation()  // bubbling or event public is also stopped  
+    },false)
+
+    
+    // now on clicking the image the images will got deleted 
+
+
+    // add event listener to the whole list and then display which li has target the event becuase li is an child of the list
+
+    document.querySelector('ul').addEventListener('click',function(e){
+        // check which li is target 
+
+        if(e.target.id==="civic"){
+            alert(`Honda Civic Is Clicked`)
+        } else if(e.target.id==="corolla"){
+            alert(`Toyota Corolla Is Clicked`)
+        } else if(e.target.id==="revo"){
+            alert(`Toyota Revo Is Clicked`)
+        } else if(e.target.id==="main-title"){
+            alert(`Main Title is CLicked`)
+        }
+    },false)
+
+
+
+
+    // now i am removing the image on clicking on it 
+
+
+    // e.target.parentNode
+    // e.target.parentNode.removechild 
+
+
+
+    document.querySelector('ul').addEventListener('click',function(e){
+        //const li = e.target.parentNode
+        // li.remove()
+        // here is an problem on clicking on the tag a which target the event it returns the li as the targeted element duo to which its parent is ul 
+        
+        if(e.target.parentNode.tagName!='UL'){
+            const li = e.target.parentNode
+            li.remove()
+        } else{
+            e.target.remove()
+        }
+         
+    },false)
+
+
+
+
+
+ 
+
+
+</script>
+</html>

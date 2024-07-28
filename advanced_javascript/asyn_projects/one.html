@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async In JS </title>
+</head>
+<body>
+    <h1 id="main-title">
+        Asyn In JS Demo
+    </h1>
+
+    <button id="stop">Stop</button>
+</body>
+
+<script>
+    // demonstration of the js asyn fuctions 
+    // setTimeout and setInterval 
+
+
+    // setTimeOut 
+    // after 2 sec the main title is changed 
+
+
+    
+
+    const changeText= function(){
+        const title = document.querySelector('#main-title')
+        title.innerHTML=`JS Async Is Working`
+    }
+
+
+    // after the 2 sec the main title got changed 
+  
+    const changeTimeOut = setTimeout(changeText,2000) // making the reference of the timeout interval 
+
+    document.querySelector('#stop').addEventListener('click',function(){
+        clearTimeout(changeTimeOut)
+        console.log(`Timeout activity is being forcefully stopped`);
+    },false)
+  
+
+  
+</script>
+</html>

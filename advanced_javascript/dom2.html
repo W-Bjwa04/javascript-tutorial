@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Part 2</title>
+
+   
+</head>
+<body style="background-color: black; color: white;">
+    <div class="parent">
+        <div class="day">Monday </div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednesday</div>
+        <div class="day">Thursday</div>
+    </div>
+</body>
+
+<script>
+    let parent = document.querySelector('.parent')
+   // console.log(parent.children);  // children will tell the childrens of the parent
+    
+    // it will return an html collection 
+
+    for (let index = 0; index < parent.children.length; index++) {
+        //console.log(parent.children[index].innerHTML)
+        
+    }
+
+
+    // add some kind of styling 
+
+    parent.children[0].style.color='orange'
+
+
+   // console.log(parent.firstElementChild);
+
+   // finding the parent element 
+
+   let firstDay = document.querySelector('.day')
+    // finding the parent of the firstDay 
+
+    console.log(firstDay.parentElement);
+
+
+    // find al the nodes of an html element 
+
+    console.log(parent.childNodes);
+</script>
+
+</html>f
